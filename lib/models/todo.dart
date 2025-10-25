@@ -31,13 +31,16 @@ class Todo {
 
 // Factory Constructor untuk membuat objek Todo dari Map (dari SQLite)
   factory Todo.fromMap(Map<String, dynamic> map) {
+    // Memberikan nilai default String jika nilai dari database adalah null
+    const String defaultDate = '2025-01-01';
+
     // Digunakan saat membaca data dari database (SELECT).
     return Todo(
       id: map['id'],
       title: map['title'],
       description: map['description'],
-      createdAt: map['createdAt'],
-      deadline: map['deadline'],
+      createdAt: map['createdAt'] ?? defaultDate,
+      deadline: map['deadline'] ?? defaultDate,
       isDone: map['isDone'],
     );
   }

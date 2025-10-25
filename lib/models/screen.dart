@@ -95,7 +95,7 @@ class _TodoListScreenState extends State<TodoListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Daftar Tugas Prioritas'),
+        title: const Text('Daily Planner'),
         backgroundColor: Colors.indigo,
         foregroundColor: Colors.white,
         elevation: 4,
@@ -105,8 +105,6 @@ class _TodoListScreenState extends State<TodoListScreen> {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
-          } else if (snapshot.hasError) {
-            return Center(child: Text('Error: ${snapshot.error}'));
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
             return const Center(child: Text('Tidak ada tugas. Silahkan tambah tugas baru!'));
           } else {
